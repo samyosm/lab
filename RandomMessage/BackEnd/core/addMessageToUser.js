@@ -1,4 +1,5 @@
 const { mangoClient } = require('../clients/mangoClient');
+const { creditsPerMessage } = require('../config/global');
 const log = require("debug")("random-ms:core")
 
 const addMessageToUser = async (ip, message_id) => {
@@ -12,6 +13,9 @@ const addMessageToUser = async (ip, message_id) => {
   const updateDocument = {
     $push: {
       "messages": message_id,
+    },
+    $inc: {
+      credits: creditsPerMessage,
     }
   }
 
