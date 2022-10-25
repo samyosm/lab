@@ -1,5 +1,4 @@
 const { mangoClient } = require('../clients/mangoClient');
-const { ObjectId } = require("mangodb");
 const log = require("debug")("random-ms:core")
 
 const addUserToDb = async (ip) => {
