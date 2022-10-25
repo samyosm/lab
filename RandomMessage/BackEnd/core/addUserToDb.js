@@ -11,12 +11,12 @@ const addUserToDb = async (ip) => {
     messages: [],
     credits: 0,
   }
-  log(`Inserting user with id ${uid} to database.`);
+  log(`Inserting user with id ${ip} to database.`);
   try {
     await userCollection.insertOne(user);
-    log(`Succesfully inserted user with id ${uid} to database.`);
+    log(`Succesfully inserted user with ip ${ip} to database.`);
   } catch (error) {
-    log(`Couldn't insert user with id ${uid} to database because ${error}`);
+    log(`Couldn't insert user with ip ${ip} to database because ${error}`);
   }
 }
 
