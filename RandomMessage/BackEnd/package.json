@@ -1,0 +1,15 @@
+{
+  "name": "BackEnd",
+  "version": "1.0.0",
+  "description": "The API for the RandomMessage project",
+  "main": "index.js",
+  "author": "Samy Rahmani",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mangodb": "^1.0.0",
+    "nanoid": "^4.0.0"
+  }
+}
