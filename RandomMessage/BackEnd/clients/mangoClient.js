@@ -1,4 +1,4 @@
-const { MangoClient } = require("mangodb");
+const { MangoClient } = require("mongodb");
 
 const URI = process.env.MANGODB_URI;
 
