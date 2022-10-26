@@ -9,6 +9,7 @@ const addMessageToDb = async ({ ip, content, creationTimestamp }) => {
   const messagesCollection = randomMessageDb.collection("messages");
 
   const id = ObjectId();
+  const creationTimestamp = new Date().getTime();
 
   const messageDoc = {
     _id: id,
