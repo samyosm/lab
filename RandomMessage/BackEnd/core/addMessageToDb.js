@@ -17,8 +17,6 @@ const addMessageToDb = async ({ ip, content, creationTimestamp }) => {
     creationTimestamp,
   }
 
-  console.log(id);
-
   /* Functions */
   const updateUserToReflectMessage = async () => {
     log(`Updating user with ip ${ip}.`);
@@ -42,7 +40,9 @@ const addMessageToDb = async ({ ip, content, creationTimestamp }) => {
     }
   }
 
-  insertMessageToDb(messageDoc);
+  await insertMessageToDb(messageDoc);
+
+  return messageDoc;
 }
 
 module.exports = addMessageToDb;
