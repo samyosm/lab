@@ -1,6 +1,7 @@
 const { mangoClient } = require('../clients/mangoClient');
 const { ObjectId } = require('mangodb');
 const addMessageToUser = require('./addMessageToUser');
+const addMessageToGlobalList = require('./addMessageToGlobalList');
 const log = require("debug")("random-ms:core")
 
 const addMessageToDb = async ({ip, messageContent, creationTimestamp, id}) => {
@@ -31,6 +32,7 @@ const addMessageToDb = async ({ip, messageContent, creationTimestamp, id}) => {
     log(`Inserting message with id ${id}.`);
     try {
       await messagesCollection.insertOne(messageDoc);
+      await addMessageToGlobalList(id);
       await updateUserToReflectMessage(ip, id)
       log(`Succesfully inserted message with id ${id}.`);
     } catch (error) {
