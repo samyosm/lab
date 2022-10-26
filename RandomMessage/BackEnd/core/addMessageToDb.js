@@ -1,11 +1,14 @@
 const { mongoClient } = require('../clients/mongoClient');
+const { ObjectId } = require('mongodb')
 const addMessageToUser = require('./addMessageToUser');
 const addMessageToGlobalList = require('./addMessageToGlobalList');
 const log = require("debug")("random-ms:core")
 
-const addMessageToDb = async ({ ip, content, creationTimestamp, id }) => {
+const addMessageToDb = async ({ ip, content, creationTimestamp }) => {
   const randomMessageDb = mongoClient.db("random_message");
   const messagesCollection = randomMessageDb.collection("messages");
+
+  const id = ObjectId();
 
   const messageDoc = {
     _id: id,
