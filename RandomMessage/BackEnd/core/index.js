@@ -1,7 +1,7 @@
 const addMessageToDb = require("./addMessageToDb");
 const getRandomMessageFromDb = require("./getRandomMessageFromDb");
 
-modules.export = {
+module.exports = {
   getRandomMessageFromDb,
   addMessageToDb,
 }
