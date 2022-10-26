@@ -1,5 +1,6 @@
 const { mongoClient } = require('../clients/mongoClient');
 const { GLOBAL_LIST_ID } = require('../config/global');
+const { ObjectId } = require("mongodb");
 const log = require("debug")("random-ms:core")
 
 const addMessageToGlobalList = async (message_id) => {

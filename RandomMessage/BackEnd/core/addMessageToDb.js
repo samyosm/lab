@@ -1,21 +1,20 @@
 const { mongoClient } = require('../clients/mongoClient');
-const { ObjectId } = require('mongodb');
 const addMessageToUser = require('./addMessageToUser');
 const addMessageToGlobalList = require('./addMessageToGlobalList');
 const log = require("debug")("random-ms:core")
 
-const addMessageToDb = async ({ip, messageContent, creationTimestamp, id}) => {
+const addMessageToDb = async ({ ip, content, creationTimestamp, id }) => {
   const randomMessageDb = mongoClient.db("random_message");
   const messagesCollection = randomMessageDb.collection("messages");
 
   const messageDoc = {
-    _id: ObjectId(id),
-    content: messageContent,
+    _id: id,
+    content,
     ip,
     creationTimestamp,
   }
 
-  insertMessageToDb(messageDoc);
+  console.log(id);
 
   /* Functions */
   const updateUserToReflectMessage = async () => {
@@ -39,6 +38,8 @@ const addMessageToDb = async ({ip, messageContent, creationTimestamp, id}) => {
       log(`Couldn't insert message with id ${id} because ${error}`);
     }
   }
+
+  insertMessageToDb(messageDoc);
 }
 
 module.exports = addMessageToDb;
