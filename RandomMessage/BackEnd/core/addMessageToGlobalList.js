@@ -1,9 +1,9 @@
-const { mangoClient } = require('../clients/mangoClient');
+const { mongoClient } = require('../clients/mongoClient');
 const { GLOBAL_LIST_ID } = require('../config/global');
 const log = require("debug")("random-ms:core")
 
 const addMessageToGlobalList = async (message_id) => {
-  const randomMessageDb = mangoClient.db("random_message");
+  const randomMessageDb = mongoClient.db("random_message");
   const messagesCollection = randomMessageDb.collection("messages");
 
   const query = {

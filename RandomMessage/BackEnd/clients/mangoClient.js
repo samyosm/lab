@@ -1,7 +1,7 @@
-const { MangoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
 
-const URI = process.env.MANGODB_URI;
+const URI = process.env.MONGODB_URI;
 
-const mangoClient = new MangoClient(URI);
+const mongoClient = new MongoClient(URI);
 
-module.exports = { mangoClient };
+module.exports = { mongoClient };
