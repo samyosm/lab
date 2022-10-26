@@ -1,9 +1,7 @@
-const addUserToDb = require("./addUserToDb");
-const addMessageToUser = require("./addMessageToUser");
 const addMessageToDb = require("./addMessageToDb");
+const getRandomMessageFromDb = require("./getRandomMessageFromDb");
 
-modules.exports = {
-  addUserToDb,
-  addMessageToUser,
-  addMessageToDb
+modules.export = {
+  getRandomMessageFromDb,
+  addMessageToDb,
 }
