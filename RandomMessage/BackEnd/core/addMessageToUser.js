@@ -19,9 +19,13 @@ const addMessageToUser = async (ip, message_id) => {
     }
   }
 
+  const options = {
+    upsert: true,
+  }
+
   log(`Adding message with id ${message_id} to user with ip ${ip}.`);
   try {
-    await userCollection.updateOne(query, updateDocument);
+    await userCollection.updateOne(query, updateDocument, options);
     log(`Succesfully added message with id ${message_id} to user with ip ${ip}.`);
   } catch (error) {
     log(`Couldn't add message with id ${message_id} to user with ip ${ip} because ${error}.`);
