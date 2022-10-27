@@ -1,10 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const log = require("debug")("random-ms:API")
+const cors = require("cors");
+
 const v1 = require("./v1/V1Router");
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: "*" }));
 
 app.use('/api/', v1);
 
@@ -13,7 +16,12 @@ app.use((req, res, next) => {
 
   // respond with json
   if (req.accepts('json')) {
-    res.json({ error: 'Not found' });
+    res.json({ error: 'Not found',
+possibleEndpoints: [
+"GET /api/message",
+"POST /api/message",
+]
+ });
     return;
   }
 
