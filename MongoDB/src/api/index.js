@@ -2,10 +2,8 @@ const express = require('express');
 const { GetLetter, AddLetter, GetLetters, UpdateLetter } = require('../core');
 const { EJSON } = require('bson');
 const log = require('debug')('mangodb:API');
-const _app = express();
-const app = express.Router();
-_app.use(express.json());
-_app.use(process.env.PREFIX, app)
+const app = express();
+app.use(express.json());
 
 /* Hello */
 app.get('/', async (req, res) => {
@@ -57,6 +55,8 @@ app.put('/api/v1/updateLetter', async (req, res) => {
   res.status(200).json(result);
 });
 
-_app.listen(process.env.PORT, () => {
-  log(`Started listening on port ${process.env.PORT} with prefix ${process.env.PREFIX}!`);
+app.listen(process.env.PORT, () => {
+  log(
+    `Started listening on port ${process.env.PORT} with prefix ${process.env.PREFIX}!`,
+  );
 });
